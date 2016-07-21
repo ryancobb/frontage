@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="uptime verification" tests="11" time="39.691087" failures="0" errors="0" skipped="0" timestamp="2016-07-19T10:53:47-06:00">
+  <testcase name="uptime verification Able to login" time="9.374675">
+  </testcase>
+  <testcase name="uptime verification Invalid login" time="0.962953">
+  </testcase>
+  <testcase name="uptime verification Verifies master widget loaded" time="2.901055">
+  </testcase>
+  <testcase name="uptime verification Accounts widget loads" time="2.858192">
+  </testcase>
+  <testcase name="uptime verification Transactions widget loads" time="2.928878">
+  </testcase>
+  <testcase name="uptime verification Spending widget loads" time="2.749617">
+  </testcase>
+  <testcase name="uptime verification Budgets widget loads" time="2.824623">
+  </testcase>
+  <testcase name="uptime verification Trends widget loads" time="2.734783">
+  </testcase>
+  <testcase name="uptime verification Debts widget loads" time="2.394543">
+  </testcase>
+  <testcase name="uptime verification Net Worth widget loads" time="2.469545">
+  </testcase>
+  <testcase name="uptime verification Goal widget loads" time="2.485573">
+  </testcase>
+  <system-out>
+AFTER EVERYTHINGS OVER
+  </system-out>
+</testsuite>
