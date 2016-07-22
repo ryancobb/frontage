@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714224956) do
+ActiveRecord::Schema.define(version: 20160721214133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "test_case_runs", force: :cascade do |t|
     t.integer  "test_case_id"
-    t.time     "time"
     t.integer  "status"
     t.string   "status_msg"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "test_suite_run_id"
+    t.float    "time"
     t.index ["test_case_id"], name: "index_test_case_runs_on_test_case_id", using: :btree
     t.index ["test_suite_run_id"], name: "index_test_case_runs_on_test_suite_run_id", using: :btree
   end
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20160714224956) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "test_suite_id"
+    t.index ["name", "test_suite_id"], name: "index_test_cases_on_name_and_test_suite_id", unique: true, using: :btree
     t.index ["test_suite_id"], name: "index_test_cases_on_test_suite_id", using: :btree
   end
 
   create_table "test_suite_runs", force: :cascade do |t|
     t.integer  "tests"
-    t.time     "time"
     t.integer  "failures"
     t.integer  "errs"
     t.integer  "skipped"
@@ -45,13 +45,16 @@ ActiveRecord::Schema.define(version: 20160714224956) do
     t.integer  "test_suite_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.float    "time"
     t.index ["test_suite_id"], name: "index_test_suite_runs_on_test_suite_id", using: :btree
+    t.index ["timestamp", "test_suite_id"], name: "index_test_suite_runs_on_timestamp_and_test_suite_id", unique: true, using: :btree
   end
 
   create_table "test_suites", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_test_suites_on_name", unique: true, using: :btree
   end
 
   add_foreign_key "test_case_runs", "test_cases"

@@ -19,7 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.minute do
-  rake "uptime"
-  #import file
-end
+#every 1.minute do
+#  rake "run_and_import", :environment => "development"
+#end

@@ -10,6 +10,7 @@ gem 'require_all'
 gem 'ci_reporter_rspec'
 gem 'whenever', :require => false
 gem 'nokogiri'
+gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'

@@ -7,11 +7,6 @@ Bundler.require(:default)
 
 ###################### Rspec config ############################
 RSpec.configure do |config|
-  config.before(:suite) { puts "BEFORE EVERYTHINGS BEGUN" }
-  config.after(:suite) do
-    sleep 5
-    puts "AFTER EVERYTHINGS OVER"
-  end
 end
 
 ################ Default Environment ##########################

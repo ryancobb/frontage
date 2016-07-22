@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="uptime verification" tests="11" time="39.691087" failures="0" errors="0" skipped="0" timestamp="2016-07-19T10:53:47-06:00">
-  <testcase name="uptime verification Able to login" time="9.374675">
+<testsuite name="uptime verification" tests="11" time="32.16997" failures="0" errors="1" skipped="0" timestamp="2016-07-22T13:42:03-06:00">
+  <testcase name="uptime verification Able to login" time="3.901386">
   </testcase>
-  <testcase name="uptime verification Invalid login" time="0.962953">
+  <testcase name="uptime verification Invalid login" time="0.959476">
   </testcase>
-  <testcase name="uptime verification Verifies master widget loaded" time="2.901055">
+  <testcase name="uptime verification Verifies master widget loaded" time="2.961772">
   </testcase>
-  <testcase name="uptime verification Accounts widget loads" time="2.858192">
+  <testcase name="uptime verification Accounts widget loads" time="2.883247">
   </testcase>
-  <testcase name="uptime verification Transactions widget loads" time="2.928878">
+  <testcase name="uptime verification Transactions widget loads" time="2.779419">
   </testcase>
-  <testcase name="uptime verification Spending widget loads" time="2.749617">
+  <testcase name="uptime verification Spending widget loads" time="2.895177">
   </testcase>
-  <testcase name="uptime verification Budgets widget loads" time="2.824623">
+  <testcase name="uptime verification Budgets widget loads" time="3.818746">
   </testcase>
-  <testcase name="uptime verification Trends widget loads" time="2.734783">
+  <testcase name="uptime verification Trends widget loads" time="2.607614">
   </testcase>
-  <testcase name="uptime verification Debts widget loads" time="2.394543">
+  <testcase name="uptime verification Debts widget loads" time="3.354075">
+    <error type="Capybara::ElementNotFound" message="Unable to find xpath &quot;//*[@class='icon-debts']/../..&quot;">
+Unable to find xpath "//*[@class='icon-debts']/../.." (Capybara::ElementNotFound)
+Capybara::ElementNotFound:
+Unable to find xpath "//*[@class='icon-debts']/../.."
+./test/frontend_tests/feature/firefly/raja.rb:12:in `click_widget'
+./test/frontend_tests/spec/firefly/uptime_spec.rb:67:in `block (3 levels) in &lt;top (required)&gt;'
+./test/frontend_tests/spec/firefly/uptime_spec.rb:66:in `block (2 levels) in &lt;top (required)&gt;'    </error>
   </testcase>
-  <testcase name="uptime verification Net Worth widget loads" time="2.469545">
+  <testcase name="uptime verification Net Worth widget loads" time="3.490934">
   </testcase>
-  <testcase name="uptime verification Goal widget loads" time="2.485573">
+  <testcase name="uptime verification Goal widget loads" time="2.516152">
   </testcase>
-  <system-out>
-AFTER EVERYTHINGS OVER
-  </system-out>
 </testsuite>
