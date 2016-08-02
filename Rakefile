@@ -4,3 +4,5 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+ENV["CI_REPORTS"] = "test/frontend_tests/reports"

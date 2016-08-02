@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><%= @test_case.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Test Case Passes <%= @passing_rate %>% of the time</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+
+        </thead>
+        <tbody>
+          <% @test_case.test_case_runs.each do |test_case_run| %>
+            <tr>
+              <td><%= test_case_run.test_suite_run.timestamp %></td>
+              <td><%= test_case_run.status_msg %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+<%= link_to 'Edit', edit_test_suite_test_case_path(@test_case) %> |
+<%= link_to 'Back', test_suite_test_cases_path %>

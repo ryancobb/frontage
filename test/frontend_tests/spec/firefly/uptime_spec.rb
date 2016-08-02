@@ -81,7 +81,7 @@ describe "uptime verification", :type => :feature do
     Firefly::login(Firefly::USERNAME, Firefly::PASSWORD)
     within_frame(find(Raja::IFRAME)) do
       Raja.click_widget(Widgets::Goals::TOP_BUTTON)
-      expect(page).to have_xpath(Raja.widget_xpath_builder(Widgets::Goals::WIDGET_CLASS))
+      expect(page).to have_xpath(Raja.widget_xpath_builder(Widgets::Goals::WIDGET_CLfsdfsdfASS))
     end
   end
 end
