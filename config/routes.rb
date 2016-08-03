@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
     resources :test_cases
   end
+  root "test_suites#index"
 end
