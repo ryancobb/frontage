@@ -4,7 +4,8 @@ class TestSuiteRunsController < ApplicationController
   # GET /test_suite_runs
   # GET /test_suite_runs.json
   def index
-    @test_suite_runs = TestSuiteRun.order('timestamp DESC')
+    @test_suite = TestSuite.find(params[:test_suite_id])
+    @test_suite_runs = @test_suite.test_suite_runs.order("timestamp DESC")
 
     @passing_rate = calculate_passing_rate
 

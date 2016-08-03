@@ -10,7 +10,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-/spec/reports/*
+/test/frontend_tests/reports/*
 !/log/.keep
 !/tmp/.keep
 

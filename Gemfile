@@ -11,7 +11,6 @@ gem 'ci_reporter_rspec'
 gem 'whenever', :require => false
 gem 'nokogiri'
 gem 'listen', '~> 3.0.5'
-gem 'd3-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'

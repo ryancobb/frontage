@@ -7,6 +7,8 @@ Bundler.require(:default)
 
 ###################### Rspec config ############################
 RSpec.configure do |config|
+  config.color = true
+  config.failure_exit_code = 0
 end
 
 ################ Default Environment ##########################
