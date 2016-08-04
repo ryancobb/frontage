@@ -44,7 +44,7 @@ var graphs = {
             .attr("y", 50)
             .attr("width", 15)
             .attr("height", 60)
-            .attr("fill", function(d) { return colorScale(d["errs"]) });
+            .attr("fill", function(d) { return colorScale(d["errs"] + d["failures"]) });
 
           rects.exit().remove();
         }
