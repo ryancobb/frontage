@@ -6,7 +6,7 @@ module RakeTestHelper
 
   def self.run(task)
     Thread.new() {
-      %x[rake frontend:uptime]
+      %x[rake #{task}]
     }
   end
 end
