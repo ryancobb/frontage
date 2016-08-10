@@ -1,3 +1,10 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
   <%= link_to "Frontage", root_path, :class => "navbar-brand" %>
+  <ul class="nav navbar-nav pull-xs-right">
+    <li class="nav-item">
+      <% if current_user %>
+        <a class="nav-link">Hello, <%= current_user.first_name %></a>
+      <% end %>
+    </li>
+  </ul>
 </nav>

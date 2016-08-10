@@ -1,5 +1,6 @@
 class TestSuitesController < ApplicationController
-  before_action :set_test_suite, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_suite, only: [:show, :edit, :update, :destroy, :run]
+  before_action :authenticate!
 
   # GET /test_suites
   # GET /test_suites.json
@@ -10,6 +11,11 @@ class TestSuitesController < ApplicationController
   # GET /test_suites/1
   # GET /test_suites/1.json
   def show
+  end
+
+  def run
+    RakeTestHelper.run(@test_suite.task_name)
+    redirect_to :action => :index
   end
 
   # GET /test_suites/new
@@ -69,6 +75,6 @@ class TestSuitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_suite_params
-      params.fetch(:test_suite, {})
+      params.require(:test_suite).permit(:task_name)
     end
 end
