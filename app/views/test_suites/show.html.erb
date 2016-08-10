@@ -1,10 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<% @test_suite.test_suite_runs.each do |test_suite_run| %>
-  <p>
-    <%= link_to test_suite_run.timestamp, test_suite_test_suite_run_path(@test_suite, test_suite_run) %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% test_suite_run = @test_suite.test_suite_runs.order(:id).last %>
+    <div class="card test-suite" test-suite-id="<%= @test_suite.id %>">
+      <div class="card-header text-sm-right">
+        <%= link_to 'Run', run_test_suite_path(@test_suite), :class => 'btn btn-primary' %>
+      </div>
+      <div class="card-block">
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="card-title"><%= @test_suite.name.titleize %></h4>
+          </div>
+        </div>
+        <p>
+          <%= form_for @test_suite do |f| %>
+            <div class="form-group row">
+              <%= f.label "Rake Task", :class => "col-sm-2 col-form-label" %>
+              <div class="col-sm-8">
+                <%= f.select(:task_name, ::RakeTestHelper.list_tests, {} ,:class => "form-control") %>
+              </div>
+              <div class="col-sm-2 text-sm-center">
+                <%= submit_tag("Update", :class => 'btn btn-secondary') %>
+              </div>
+            </div>
+          <% end %>
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col-sm-12"
+            Last Run
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <%= test_suite_run.timestamp %>
+          </div>
+          <div class="col-sm-3">
+            <% if test_suite_run.passed? %>
+            Passed
+            <% else %>
+            Failed
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_test_suite_path(@test_suite) %> |
-<%= link_to 'Back', test_suites_path %>
+  </div>
+</div>
+
+<script>
+  graphs.dashboard();
+</script>
