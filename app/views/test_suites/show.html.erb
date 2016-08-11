@@ -13,19 +13,17 @@
             <h4 class="card-title"><%= @test_suite.name.titleize %></h4>
           </div>
         </div>
-        <p>
-          <%= form_for @test_suite do |f| %>
-            <div class="form-group row">
-              <%= f.label "Rake Task", :class => "col-sm-2 col-form-label" %>
-              <div class="col-sm-8">
-                <%= f.select(:task_name, ::RakeTestHelper.list_tests, {} ,:class => "form-control") %>
-              </div>
-              <div class="col-sm-2 text-sm-center">
-                <%= submit_tag("Update", :class => 'btn btn-secondary') %>
-              </div>
+        <%= form_for @test_suite do |f| %>
+          <div class="form-group row">
+            <%= f.label "Rake Task", :class => "col-sm-2 col-form-label" %>
+            <div class="col-sm-8">
+              <%= f.select(:task_name, ::RakeTestHelper.list_tests, {} ,:class => "form-control") %>
             </div>
-          <% end %>
-        </p>
+            <div class="col-sm-2 text-sm-center">
+              <%= submit_tag("Update", :class => 'btn btn-secondary') %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="card-footer text-muted">
         <div class="row">

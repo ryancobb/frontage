@@ -1,0 +1,15 @@
+<p id="notice"></p>
+
+<div class="container">
+  <div class="row">
+    <div class="card test-suite">
+      <div class="card-header text-sm-right">
+        <%= link_to 'Logout', logout_path, :class => 'btn btn-primary' %>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title"><%= @user.full_name %></h4>
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

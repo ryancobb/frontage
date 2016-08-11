@@ -10,5 +10,10 @@ namespace :frontend do
   RSpec::Core::RakeTask.new(:dummy => 'ci:setup:rspec') do |t|
     t.pattern = Dir.glob('test/frontend_tests/spec/firefly/dummy_spec.rb')
   end
+
+  RSpec::Core::RakeTask.new(:dummy2 => 'ci:setup:rspec') do |t|
+    t.pattern = Dir.glob('test/frontend_tests/spec/firefly/dummy2_spec.rb')
+  end
+
   task :default => :uptime
 end
