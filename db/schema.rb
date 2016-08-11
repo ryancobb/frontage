@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810205815) do
+ActiveRecord::Schema.define(version: 20160811203800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notification_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.string   "sms"
+    t.string   "slack"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notification_profiles_on_user_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "test_suite_id"
+    t.boolean  "slack"
+    t.boolean  "email"
+    t.boolean  "sms"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["test_suite_id"], name: "index_notifications_on_test_suite_id", using: :btree
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
 
   create_table "test_case_runs", force: :cascade do |t|
     t.integer  "test_case_id"
@@ -69,6 +91,9 @@ ActiveRecord::Schema.define(version: 20160810205815) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "notification_profiles", "users"
+  add_foreign_key "notifications", "test_suites"
+  add_foreign_key "notifications", "users"
   add_foreign_key "test_case_runs", "test_cases"
   add_foreign_key "test_case_runs", "test_suite_runs"
   add_foreign_key "test_cases", "test_suites"

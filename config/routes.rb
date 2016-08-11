@@ -8,12 +8,15 @@ Rails.application.routes.draw do
     resources :test_cases
   end
 
+  resources :users
+
   # Custom Routes
   get   "login"  => "sessions#new", :as => :login
   post  "login"  => "sessions#create"
   match "logout" => "sessions#destroy", :as => :logout, :via => [:get, :delete]
 
   get 'test_suites/:id/run' => "test_suites#run", :as => :run_test_suite
+  get 'profile' => "users#show", :as => :profile
 
   # Default Route
   root "test_suites#index"
