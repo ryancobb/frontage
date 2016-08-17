@@ -1,0 +1,5 @@
+class AddDefaultValueToIssuesNumOfOccurences < ActiveRecord::Migration[5.0]
+  def change
+    change_column :issues, :num_of_occurences, :integer, :default => 0
+  end
+end

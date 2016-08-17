@@ -8,12 +8,23 @@ class FileImporter
 
       testsuite = TestSuite.find_or_create_by(:name => doc_suite_name)
       testsuiterun = testsuite.test_suite_runs.find_or_create_by(:timestamp => doc_suite_timestamp, :test_suite_id => testsuite.id) do |tsr|
+        puts "Importing Run for Test Suite: #{testsuite.name}"
         tsr.tests = doc_suite.at_xpath("@tests").value
         tsr.time = doc_suite.at_xpath("@time").value
         tsr.failures = doc_suite.at_xpath("@failures").value
         tsr.errs = doc_suite.at_xpath("@errors").value
         tsr.skipped = doc_suite.at_xpath("@skipped").value
         tsr.timestamp = doc_suite_timestamp
+      end
+
+      # Create / Update Issue
+      unless testsuiterun.passed?
+        issue = Issue.find_or_create_by(:test_suite_id => testsuite.id, :active => true)
+        issue.num_of_occurences += 1
+        issue.save
+
+        # Send Notifications
+        NotifierJob.perform_later(testsuite.id, issue.num_of_occurences)
       end
 
       doc_suite.xpath("testcase").each do |doc_testcase|

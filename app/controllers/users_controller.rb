@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :run]
+  before_action :set_user, only: [:show, :update]
   before_action :authenticate!
 
   def show
     @user = User.find(current_user)
+
+    if @user.notification_profile.nil?
+      @user.create_notification_profile
+    end
+
     initialize_notifications(@user)
   end
 

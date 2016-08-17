@@ -5,7 +5,7 @@ describe "dummy spec2", :type => :feature do
 
   it "Able to login" do
     Firefly::login(Firefly::USERNAME, Firefly::PASSWORD)
-    expect(page). to have_link(Firefly::LOGOUT_BUTTON)
+    expect(page). to have_link(Firefly::LOGOUT_BUTTOdfsdfsdfsN)
     click_link Firefly::LOGOUT_BUTTON
   end
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :issues
 
   # Custom Routes
   get   "login"  => "sessions#new", :as => :login

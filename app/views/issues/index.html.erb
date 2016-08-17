@@ -1,0 +1,35 @@
+<p id="notice"></p>
+
+<div class="container">
+  <% if @issues.blank? %>
+    <div class="row">
+      <div class="col-md-12 text-sm-center">
+        <h1> No Issues! :)</h1>
+      </div>
+    </div>
+  <% else %>
+    <% @issues.each do |issue| %>
+      <div class="row">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title"><%= link_to issue.test_suite.name, test_suite_test_suite_runs_path(issue.test_suite.id) %></h4>
+            <div class="col-md-6">
+              <h6>Last Occured: <%= "#{time_ago_in_words(issue.updated_at)} ago" %></h6>
+              <h6>First Occured: <%= "#{time_ago_in_words(issue.created_at)} ago" %></h6>
+            </div>
+            <div class="col-md-4 text-sm-center">
+              <h6>Occurences</h6>
+              <%= issue.num_of_occurences %>
+            </div>
+            <div class="col-md-2">
+              <%= form_for issue do |f| %>
+                <%= f.hidden_field :active, :value => false %>
+                <%= submit_tag("Acknowledge", :class => 'btn btn-primary') %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811203800) do
+ActiveRecord::Schema.define(version: 20160816203126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "issues", force: :cascade do |t|
+    t.integer  "test_suite_id"
+    t.integer  "num_of_occurences", default: 0
+    t.integer  "claimed_by"
+    t.boolean  "active"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["test_suite_id"], name: "index_issues_on_test_suite_id", using: :btree
+  end
 
   create_table "notification_profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -91,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160811203800) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "issues", "test_suites"
   add_foreign_key "notification_profiles", "users"
   add_foreign_key "notifications", "test_suites"
   add_foreign_key "notifications", "users"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_suite: one
+  num_of_occurences: 1
+  claimed_by: 1
+  active: false
+
+two:
+  test_suite: two
+  num_of_occurences: 1
+  claimed_by: 1
+  active: false

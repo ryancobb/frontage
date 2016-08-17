@@ -11,6 +11,9 @@ gem 'ci_reporter_rspec'
 gem 'whenever', :require => false
 gem 'nokogiri'
 gem 'listen'
+gem 'resque'
+gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
+gem 'slack-notifier'
 
 # Use Warden and Ldap for auth
 gem 'warden'
