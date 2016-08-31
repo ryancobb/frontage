@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'listen'
 gem 'resque'
 gem 'slack-notifier'
+gem 'will_paginate'
 
 # Use Warden and Ldap for auth
 gem 'warden'

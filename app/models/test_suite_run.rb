@@ -9,4 +9,8 @@ class TestSuiteRun < ApplicationRecord
       false
     end
   end
+
+  def css_mapping
+    self.passed? ? "table-success" : "table-danger"
+  end
 end

@@ -1,25 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Test Case Runs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @test_case_runs.each do |test_case_run| %>
+<div class="col-sm-12">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', test_case_run %></td>
-        <td><%= link_to 'Edit', edit_test_case_run_path(test_case_run) %></td>
-        <td><%= link_to 'Destroy', test_case_run, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th>Status</th>
+        <th>Time to Run</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Test Case Run', new_test_case_run_path %>
+    </thead>
+    <tbody>
+      <% @test_case_runs.each do |test_case_run| %>
+        <tr>
+          <td><%= time_ago_in_words(test_case_run.created_at) %> ago</td>
+          <td><%= test_case_run.status_msg %></td>
+          <td><%= test_case_run.time.round(2) %>s</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row text-sm-right">
+  </div>
+</div>

@@ -20,7 +20,7 @@
         <tbody>
           <% @test_case.test_case_runs.each do |test_case_run| %>
             <tr>
-              <td><%= test_case_run.test_suite_run.timestamp %></td>
+              <td><%= time_ago_in_words(test_case_run.test_suite_run.timestamp) %> ago</td>
               <td><%= test_case_run.status_msg %></td>
           <% end %>
         </tbody>

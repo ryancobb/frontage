@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-sm-left">Name</th>
+        <th class="text-sm-center">Passing Rate</th>
+        <th class="text-sm-center">Average time to run</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @test_cases.each do |test_case| %>
+        <tr class="text-sm-center">
+          <td class="text-sm-left"><%= link_to test_case.name, test_suite_test_case_test_case_runs_path(params[:id], test_case.id) %></td>
+          <td><%= test_case.passing_rate %>%</td>
+          <td><%= test_case.average_time %>s</div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row text-sm-right">
+  </div>
+</div>

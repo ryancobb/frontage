@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-sm-12">
       <h1><%= @test_suite_run.test_suite.name %></h1>
-      <h4>Last Run: <%= @test_suite_run.timestamp %></h4>
+      <h4> <%= time_ago_in_words(@test_suite_run.timestamp) %> ago</h4>
     </div>
   </div>
 

@@ -2,17 +2,15 @@
 
 <div class="container">
   <div class="row">
-    <% test_suite_run = @test_suite.test_suite_runs.order(:id).last %>
-    <div class="card test-suite" test-suite-id="<%= @test_suite.id %>">
+    <h1><%= @test_suite.name.titleize %></h1>
+  </div>
+
+  <div class="row">
+    <div class="card">
       <div class="card-header text-sm-right">
         <%= link_to 'Run', run_test_suite_path(@test_suite), :class => 'btn btn-primary' %>
       </div>
       <div class="card-block">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="card-title"><%= @test_suite.name.titleize %></h4>
-          </div>
-        </div>
         <%= form_for @test_suite do |f| %>
           <div class="form-group row">
             <%= f.label "Rake Task", :class => "col-sm-2 col-form-label" %>
@@ -25,26 +23,25 @@
           </div>
         <% end %>
       </div>
-      <div class="card-footer text-muted">
-        <div class="row">
-          <div class="col-sm-12"
-            Last Run
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <%= test_suite_run.timestamp %>
-          </div>
-          <div class="col-sm-3">
-            <% if test_suite_run.passed? %>
-            Passed
-            <% else %>
-            Failed
-            <% end %>
-          </div>
-        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card">
+      <div class="card-block">
+        <%= render partial: 'widgets/pass_fail_graph', locals: {test_suite_id: @test_suite.id} %>
+      </div>
+      <div class="card-footer text-sm-right">
+        <%= link_to "History", test_suite_test_suite_runs_path(@test_suite.id) %>
       </div>
     </div>
-
   </div>
-</div>
+
+  <div class="row">
+    <div class="card">
+      <div class="card-block">
+      <h4 class="card-title">Test Cases</h4>
+      <%= render 'widgets/test_cases' %>
+      </div>
+    </div>
+  </div>

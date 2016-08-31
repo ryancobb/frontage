@@ -17,3 +17,20 @@
 body {
   padding-top: 60px;
 }
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 5px;
+  color: white;
+  background: #373a3c;
+  font-weight: lighter;
+  font-size: 8;
+  border: 0px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+div.issue {
+  background-color: #ffe6e6;
+}

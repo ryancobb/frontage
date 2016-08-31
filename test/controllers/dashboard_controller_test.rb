@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FileImportJobTest < ActiveJob::TestCase
+class DashboardControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

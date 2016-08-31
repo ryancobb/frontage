@@ -14,4 +14,8 @@ module Notifier
   def self.email(users)
 
   end
+
+  def self.sms(users)
+
+  end
 end

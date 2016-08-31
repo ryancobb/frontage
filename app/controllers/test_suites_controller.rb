@@ -11,11 +11,13 @@ class TestSuitesController < ApplicationController
   # GET /test_suites/1
   # GET /test_suites/1.json
   def show
+    @test_cases = TestCase.where(:test_suite_id => @test_suite.id)
+    @test_suite_runs = TestSuiteRun.where(:test_suite_id => @test_suite.id).order("timestamp DESC").paginate(:page => params[:page])
   end
 
   def run
     RakeTestHelper.run(@test_suite.task_name)
-    redirect_to :action => :index
+    redirect_to :root
   end
 
   # GET /test_suites/new
