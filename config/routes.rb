@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, :only => [:show]
-  resources :issues, :only => [:index]
+  resources :issues
 
   # Custom Routes
   get   "login"  => "sessions#new", :as => :login

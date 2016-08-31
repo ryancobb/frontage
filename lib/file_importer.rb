@@ -52,7 +52,7 @@ class FileImporter
     else
       errors = {
         :status => 0,
-        :msg => doc_testcase.xpath("error").last.at_xpath("@message").value
+        :msg => doc_testcase.xpath("error").last.inner_html
       }
     end
   end
