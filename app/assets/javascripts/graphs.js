@@ -47,7 +47,7 @@ var graphs = {
         .enter().append("g")
           .append("svg:a")
             .attr("xlink:href", function(d) {
-              url = "test_suites/" + test_suite_id + "/test_suite_runs/" + d.id;
+              url = window.location.origin + "/test_suites/" + test_suite_id + "/test_suite_runs/" + d.id;
               return url;
             })
             .on("mouseover", function(d) {
