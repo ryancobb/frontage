@@ -9,6 +9,10 @@ Bundler.require(:default)
 RSpec.configure do |config|
   config.color = true
   config.failure_exit_code = 0
+
+  config.after(:suite) do
+    puts "Environment: #{ENV["env"]}, Browser: #{ENV["browser"]}"
+  end
 end
 
 ################ Default Environment ##########################

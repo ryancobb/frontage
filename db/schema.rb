@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816203126) do
+ActiveRecord::Schema.define(version: 20160902162413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20160816203126) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.float    "time"
+    t.string   "environment"
+    t.string   "browser"
     t.index ["test_suite_id"], name: "index_test_suite_runs_on_test_suite_id", using: :btree
     t.index ["timestamp", "test_suite_id"], name: "index_test_suite_runs_on_timestamp_and_test_suite_id", unique: true, using: :btree
   end

@@ -7,6 +7,11 @@ class FileImporter
       doc_suite_timestamp = doc_suite.at_xpath("@timestamp").value.to_time
 
       testsuite = TestSuite.find_or_create_by(:name => doc_suite_name)
+
+      system_out = get_system_out(doc_suite)
+      env = get_environment(system_out)
+      browser = get_browser(system_out)
+
       testsuiterun = testsuite.test_suite_runs.find_or_create_by(:timestamp => doc_suite_timestamp, :test_suite_id => testsuite.id) do |tsr|
         puts "Importing Run for Test Suite: #{testsuite.name}"
         tsr.tests = doc_suite.at_xpath("@tests").value
@@ -15,6 +20,8 @@ class FileImporter
         tsr.errs = doc_suite.at_xpath("@errors").value
         tsr.skipped = doc_suite.at_xpath("@skipped").value
         tsr.timestamp = doc_suite_timestamp
+        tsr.environment = env
+        tsr.browser = browser
       end
 
       # Create / Update Issue
@@ -55,5 +62,17 @@ class FileImporter
         :msg => doc_testcase.xpath("error").last.inner_html
       }
     end
+  end
+
+  def self.get_system_out(doc_suite)
+    doc_suite.at_xpath("system-out").inner_html
+  end
+
+  def self.get_browser(system_out)
+    system_out.match(/Browser: (.*)/)[1]
+  end
+
+  def self.get_environment(system_out)
+    system_out.match(/Environment: (.*),/)[1]
   end
 end
